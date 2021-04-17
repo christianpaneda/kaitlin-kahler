@@ -4,7 +4,7 @@ body{
   background-color: #f0e9df;
 }
 
-body, h1, h2, div.page-info{
+body, h1, div.page-info{
   font-family: ivypresto-display, serif;
   font-weight: 300;
   font-style: italic;
@@ -40,18 +40,9 @@ header.white{
 
 
 
-
-h2.about::before, h2.about::after{
-    content: "\2605";
-    padding: 0px 16px;
-    font-style: normal;
-}
-
-
-
 section{
     background-color: #f0e9df; 
-    min-height: 100vh;
+    min-height: 110vh;
     padding: 80px;
 
     display: flex;
