@@ -4,34 +4,49 @@ body{
   background-color: #f0e9df;
 }
 
-body, h1, h2, h3{
+body, h1, h2, div.page-info{
   font-family: ivypresto-display, serif;
   font-weight: 300;
   font-style: italic;
   font-size: 44px;
   letter-spacing: 2px;
+  display: inline;
+}
+
+h1::before{
+    content: '\2605';
+}
+
+h3{
+    font-weight: 300;
+    font-style: italic;
+    font-size: 24px; 
 }
 
 header{
     position: fixed;
-    margin: 28px;
+    bottom: 0;
+    padding: 16px;
     transition: color 0.5s;
+    background-color: #f0e9df;
     
 }
 
 header.white{
     color: #FFFFFF;
+    background-color: #0f100f;
 }
 
-div.page-info{
-    display: flex;
-    justify-content: left;
 
+
+
+
+h2.about::before, h2.about::after{
+    content: "\2605";
+    padding: 0px 16px;
+    font-style: normal;
 }
 
-h2.about{
-    margin-right: 10px;
-}
 
 
 section{
@@ -50,14 +65,32 @@ section img{
 
 section.section-2, section.section-4{
     background-color: #0f100f;
+    color: #f0e9df;
 }
 
-div.progress{
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 0; 
-    height: 5px;
-    background-color: #333333; 
-    z-index: 1;
+div.biography{
+    display:flex;
+    flex-direction: row;
+    margin-top: 60px;
+}
+
+div.left{
+    margin-right: 20px;
+}
+
+div.right{
+    margin-left: 20px;
+}
+
+div#page-1{
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+div.biography p{
+    margin-left: 20px;
+    font-size: 40px;
+    max-width: 75vmin;
 }
