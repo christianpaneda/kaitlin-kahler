@@ -12,7 +12,7 @@ document.addEventListener("scroll", () => {
     pixelsTag.innerHTML = "Progress: "  + Math.round(percentage) + "%";
 });
 
-// scroll effects 
+ 
 
 
 
