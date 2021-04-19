@@ -85,3 +85,68 @@ div.biography p{
     font-size: 40px;
     max-width: 75vmin;
 }
+
+
+.controls{
+    margin-bottom: 20px;;
+}
+
+.control, button {
+	background-color:#f0e9df;
+	border-radius:3px;
+	border:2px solid #908c87;
+	display:inline-block;
+	cursor:pointer;
+	color:#0f100f;
+    font-family: ivypresto-display, serif;
+    font-style: normal;
+	padding:8px 8px;
+	text-decoration:none;
+}
+.control:hover, button:hover {
+	background-color:#908c87;
+}
+.control:active {
+	position:relative;
+	top:1px;
+}
+
+
+div.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+div.mix{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px 0px;
+}
+
+div.mix p{
+    font-size: 16px;
+}
+
+div.mix img{
+object-fit:unset;
+width: 80%;
+height: 80%;
+margin-bottom: 8px;
+}
+
+input{
+    display: block;
+}
+
+#graph{
+    top-margin: 20px;
+}
+
+#graph-buttons{
+    margin-bottom: 8px;
+}

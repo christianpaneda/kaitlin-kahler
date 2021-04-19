@@ -1,7 +1,6 @@
 const pixelsTag = document.querySelector("h3.pixel")
 const bodyTag = document.querySelector("body")
 
-
 // when scrolling the page, update the pixels tag 
 
 document.addEventListener("scroll", () => {

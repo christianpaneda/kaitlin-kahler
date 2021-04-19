@@ -1,31 +1,38 @@
-
-// create 2 data_set
-var data1 = [
-    {group: "Category 1", value: 4},
-    {group: "Category 2", value: 16},
-    {group: "Category 3", value: 10}
+const buttonFollowers = document.getElementById("buttonFollowers")
+const buttonLikes = document.getElementById("buttonLikes")
+const followerData = [
+    {media: "Instagram", value: 2100},
+    {media: "YouTube", value: 151},
+    {media: "Twitter", value: 1800}
  ];
- 
- var data2 = [
-    {group: "Category A", value: 7},
-    {group: "Category B", value: 1},
-    {group: "Category C", value: 20}
+ const likesData = [
+    {media: "Instagram", value: 5000},
+    {media: "YouTube", value: 3000},
+    {media: "Twitter", value: 30000}
  ];
  
  // set the dimensions and margins of the graph
- var margin = {top: 30, right: 30, bottom: 70, left: 60},
-     width = 460 - margin.left - margin.right,
-     height = 400 - margin.top - margin.bottom;
+ const margin = 80;
+ const width = 500;
+ const height = 500;
  
- // append the svg object to the body of the page
- var svg = d3.select("#my_dataviz")
+ // set the actual graph shapes and things
+ const svg = d3.select("#kait-data")
    .append("svg")
-     .attr("width", width + margin.left + margin.right)
-     .attr("height", height + margin.top + margin.bottom)
+     .attr("width", 600)
+     .attr("height", 640)
    .append("g")
-     .attr("transform",
-           "translate(" + margin.left + "," + margin.top + ")");
+     .attr("transform", "translate(80,80)");
 
+// add title
+ const title = svg.append("text")
+       .attr("transform", "translate(20,0)")
+       .attr("x", 0)
+       .attr("y", -20)
+       .attr("font-size", "24px")
+       .text("Number of Followers on Social Media")
+
+// textures.js 
 
     const texture1 =  textures
     .lines()
@@ -33,7 +40,6 @@ var data1 = [
     .thinner(1.5);
          
     svg.call(texture1);
-
 
     const texture2 =  textures
     .lines()
@@ -49,68 +55,63 @@ var data1 = [
     .fill("firebrick");
 
     svg.call(texture3);
-
-
-    var color = d3.scaleOrdinal().domain(data1).range([texture1.url(), texture2.url(), texture3.url()]);
+    const color = d3.scaleOrdinal().domain(followerData).range([texture1.url(), texture2.url(), texture3.url()]);
     
- 
- // Initialize the X axis
- var x = d3.scaleBand()
-   .range([ 0, width ])
-   .padding(0.2);
- var xAxis = svg.append("g")
+// scales 
+    
+ let x = d3.scaleBand()
+   .range([ 0, width])
+   .padding(0.15);
+ let xAxis = svg.append("g")
    .attr("transform", "translate(0," + height + ")")
  
- // Initialize the Y axis
- var y = d3.scaleLinear()
+ let y = d3.scaleLinear()
    .range([ height, 0]);
- var yAxis = svg.append("g")
+ let yAxis = svg.append("g")
    .attr("class", "myYaxis")
- 
- 
- // A function that create / update the plot for a given variable:
+
+
+// update the data here 
+
  function update(data) {
- 
-   // Update the X axis
-   x.domain(data.map(function(d) { return d.group; }))
+  
+   x.domain(data.map(function(d) { return d.media; }))
    xAxis.call(d3.axisBottom(x))
    .selectAll("text")
    .attr("transform", "translate(-10,0)rotate(-45)")
    .style("text-anchor", "end");
 
- 
-   // Update the Y axis
    y.domain([0, d3.max(data, function(d) { return d.value }) ]);
-   yAxis.transition().duration(1000).call(d3.axisLeft(y));
- 
-   // Create the u variable
-   var u = svg.selectAll("rect")
+   yAxis.call(d3.axisLeft(y));
+
+   
+   let newBars = svg.selectAll("rect")
      .data(data)
  
-   u
+   newBars
      .enter()
-     .append("rect") // Add a new rect for each new elements
-     .merge(u) // get the already existing elements as well
-     .transition() // and apply changes to all of them
-     .duration(1000)
-       .attr("x", function(d) { return x(d.group); })
-       .attr("y", function(d) { return y(d.value); })
-       .attr("width", x.bandwidth())
-       .attr("height", function(d) { return height - y(d.value); })
-       //.attr("fill", "#69b3a2")
-       .style('fill', function(d){return color(d.value)});
-
-
-
-      
-     
-
- 
-   // If less group in the new dataset, I delete the ones not in use anymore
-   u
-     .exit()
-     .remove()
+     .append("rect") 
+     .merge(newBars)
+     .transition() 
+     .duration(1500)
+     .style('fill', function(d){return color(d.value)})
+     .attr("x", function(d) { return x(d.media); })
+     .attr("y", function(d) { return y(d.value); })
+     .attr("width", x.bandwidth())
+     .attr("height", function(d) { return height - y(d.value); });
  }
- 
- // Initialize the plot with the first dataset
- update(data1)
+
+ //set up the chart display
+ update(followerData)
+
+
+ //buttons are now working
+ buttonFollowers.addEventListener("click", () => {
+    update(followerData)
+     title.text("Number of Followers on Social Media")
+ })
+
+ buttonLikes.addEventListener("click", () => {
+    update(likesData)
+    title.text("Number of Likes and Views on Social Media")
+})

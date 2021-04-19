@@ -17,6 +17,7 @@
         <script src="js/textures.js" defer></script>
         <script src="js/data-chart.js" defer></script> 
         <script src="js/caption.js" defer></script> 
+       
 
     </head> 
 
@@ -45,41 +46,55 @@
             </div>
         </section>
 
-        <section class="section-2 data-is-dark wow animate__animated animate__rotateInUpRight" data-kaitlin="Data Science - 2/4">
+        <section class="section-2 data-is-dark wow animate__animated animate__rotateInUpRight">
             <div id="page-2">
                 <h2> The only influencer you can trust. </h2> 
-                <div class="content biography">
-                    <div class="left">
-                    <img src="imgs/kaitlin-profile-pic.jpg" alt="picture of kaitlin and she is happy">
-                    </div>
-                    <div class="right"> 
-                    <p> Kaitlin Kahler is a marketer and data scientist currently on the Marketing & Strategy Operations team at Curology.
-                    She's a University of Michigan alumna with a B.S. in Data Science and has worked with D2C companies like Shinola. Kaitlin loves talking about analytics, sustainable fashion, and Frank Ocean.</p>
-                    </div>
-                </div> 
+                <div class="controls">
+                    <button type="button" class="control" data-filter="all">All</button>
+                    <button type="button" class="control" data-filter=".skin">Skincare</button>
+                    <button type="button" class="control" data-filter=".blush">Blush</button>
+                    <button type="button" class="control" data-filter=".highlighter">Highlighter</button>
+        
+                    <button type="button" class="control" data-sort="order:desc">Newest to Oldest</button>
+                    <button type="button" class="control" data-sort="order:asc">Oldest to Newest</button>
+                </div>
+        
+                <div class="container">
+                    <div class="mix skin" data-order="2015"><img src="imgs/cleanser.png" alt="curology cleanser"><p>Curology Cleanser (2015)</p></div>
+                    <div class="mix skin" data-order="2015"><img src="imgs/moisturizer.png" alt="curology moisturizer"><p>Curology Moisturizer (2015)</p></div>
+                    <div class="mix blush skin" data-order="2019"><img src="imgs/serum-blush.png" alt="em cosmetics serum blush"><p>Em Cosmetics Serum Blush (2019)</p></div>
+                    <div class="mix highlighter" data-order="2017"><img src="imgs/fenty-highlighter.png" alt="fenty highlighter"><p>Fenty Highlighter (2017)</p></div>
+                    <div class="mix blush" data-order="2018"><img src="imgs/milk-makeup-lip-and-cheek.png" alt="milk makeup blush"><p>Milk Makeup Lip & Cheek Blush (2018)</p></div>
+                    <div class="mix blush" data-order="2020"><img src="imgs/fenty-blush.png" alt="fenty blush"><p>Fenty Beauty Blush (2020)</p></div>
+                    <div class="mix highlighter" data-order="2016"><img src="imgs/glosser-haloscope.png" alt="fenty blush"><p>Glossier Haloscope (2016)</p></div>
+                    <div class="mix blush" data-order="2020"><img src="imgs/glossier-blush.png" alt="glossier blush"><p>Glossier Blush (2020) </p></div>
+                </div>
+        
                 </div>
         </section>
 
-        <section class="section-3 wow animate__animated animate__rotateInUpLeft" data-kaitlin="Fashion Icon - 3/4">
+        <section class="section-3 wow animate__animated animate__rotateInUpLeft">
             <div class="content">
                 <div id="page-2">
-                    <h2> About Kait</h2> 
-                <div> <h3>hello</h3>
-                <button onclick="update(data1)">Instagram</button>
-                <button onclick="update(data2)">Twitter</button>
-                <div id="my_dataviz"></div>
+                    <h2> Online engagement is through the roof</h2> 
+                <div id="graph"> <h3>Check out the numbers</h3>
+                    <div id="graph-buttons">
+                <button  id="buttonFollowers">Followers</button>
+                <button  id="buttonLikes">Likes/Views</button>
+                        </div>
+                <div id="kait-data"></div>
                 </div>
             </div> 
             
         </section>
 
 
-        <section class="section-4 data-is-dark wow animate__animated animate__rotateInUpRight" data-kaitlin="DM Her - 4/4">
+        <section class="section-4 data-is-dark wow animate__animated animate__rotateInUpRight">
             <div id="page-4">
                 <h2> Stuck on Instagram captions? Create one here.</h2> 
                 <div class="content biography">
                     <div class="left">
-                    <img src="imgs/kaitlin-profile-pic.jpg" alt="picture of kaitlin and she is happy">
+                    <img src="imgs/kaitlin-insta-pic.png" alt="picture of kaitlin and she is happy">
                     </div>
                     <div class="right"> 
                         <ul>
@@ -107,6 +122,16 @@
             <script>
             new WOW().init();
             </script>
+
+
+
+<script src="js/mixitup.min.js"></script>
+
+<script>
+    var containerEl = document.querySelector('.container');
+
+    var mixer = mixitup(containerEl);
+</script>
     
 
     </body>
