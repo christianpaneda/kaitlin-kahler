@@ -55,10 +55,12 @@ const followerData = [
     .fill("firebrick");
 
     svg.call(texture3);
+    
     const color = d3.scaleOrdinal().domain(followerData).range([texture1.url(), texture2.url(), texture3.url()]);
     
+
+
 // scales 
-    
  let x = d3.scaleBand()
    .range([ 0, width])
    .padding(0.15);
@@ -109,9 +111,13 @@ const followerData = [
  buttonFollowers.addEventListener("click", () => {
     update(followerData)
      title.text("Number of Followers on Social Media")
+     .transition() 
+     .duration(1500)
  })
 
  buttonLikes.addEventListener("click", () => {
     update(likesData)
     title.text("Number of Likes and Views on Social Media")
+    .transition() 
+    .duration(1500)
 })
