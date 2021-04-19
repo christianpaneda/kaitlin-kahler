@@ -12,3 +12,5 @@ createCaptionButton.addEventListener("click", () =>{
 
     caption.textContent = emoji + " Kaitlin! " + keyboardSmash + " You're so " + prettyAdjective + "!!! " + "No one is as " + talentedAdjective + " you!! " + emoji;
 })
+
+
